@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Agendash</title>
+    <title>DOANTN- Thành Phạm && Hảo Nguyễn Project - Tasks Manager</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">
@@ -17,11 +17,11 @@
         <div class="sidebar-header">
           <h1 class="page-title"></h1>
           <div class="form-group">
-            <label for="overviewFilter">Filter by name</label>
+            <label for="overviewFilter">Lọc theo tên</label>
             <input type="text" class="overview-filter form-control">
           </div>
           <div class="form-group">
-            <label for="overviewFilter">Refresh interval (seconds)</label>
+            <label for="overviewFilter">Làm mới liên tục (theo giây)</label>
             <input type="number" value="2" class="refresh-interval form-control">
           </div>
         </div>
@@ -35,9 +35,9 @@
               <small class="active-state"></small>
             </h2>
             <ul id="select-jobs" class="nav nav-pills">
-              <li role="presentation"><a role="button" data-action="schedule-job">Schedule job</a></li>
-              <li role="presentation"><a role="button" data-action="select-all">Select all</a></li>
-              <li role="presentation"><a role="button" data-action="select-none">Select none</a></li>
+              <li role="presentation"><a role="button" data-action="schedule-job">Lịch biểu tác vụ</a></li>
+              <li role="presentation"><a role="button" data-action="select-all">Lựa chọn tất cả</a></li>
+              <li role="presentation"><a role="button" data-action="select-none">Bỏ chọn</a></li>
             </ul>
             <div class="clearfix"></div>
           </div>
@@ -45,12 +45,12 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th>Status</th>
-                  <th>Name</th>
-                  <th>Last run started</th>
-                  <th>Next run starts</th>
-                  <th>Last finished</th>
-                  <th>Locked</th>
+                  <th>Trạng thái</th>
+                  <th>Tên</th>
+                  <th>Lần chạy cuối cùng</th>
+                  <th>Lần bắt đầu chạy tiếp theo</th>
+                  <th>Lần kết thúc cuối</th>
+                  <th>Đã khóa</th>
                 </tr>
               </thead>
               <tbody id="job-list"></tbody>
@@ -58,34 +58,34 @@
           </div>
         </div>
         <div id="details-pane">
-          <h2 class="sub-header"><span class="number-selected">0</span> <small>selected</small></h2>
-          <button type="button" class="btn btn-danger btn-xs" data-action="requeue-jobs">Requeue selected</button>
-          <button type="button" class="btn btn-danger btn-xs pull-right" data-action="delete-jobs">Delete selected</button>
+          <h2 class="sub-header"><span class="number-selected">0</span> <small>Đã chọn</small></h2>
+          <button type="button" class="btn btn-danger btn-xs" data-action="requeue-jobs">Xếp hàng lại tác vụ đã chọn</button>
+          <button type="button" class="btn btn-danger btn-xs pull-right" data-action="delete-jobs">Xóa lựa chọn</button>
           <hr />
           <div id="details-list"></div>
         </div>
         <div id="create-job-pane">
-          <h2 class="sub-header">Create Job</h2>
+          <h2 class="sub-header">Tạo Công việc</h2>
           <hr />
           <div class="form-group">
-            <label>Job name</label>
+            <label>Tên tác vụ</label>
             <input type="text" class="job-name form-control">
           </div>
           <div class="form-group">
-            <label>Schedule</label>
+            <label>Lịch biểu</label>
             <input type="text" class="job-schedule form-control">
           </div>
           <div class="form-group">
-            <label>Repeat every</label>
+            <label>Lặp lại định kỳ</label>
             <input type="text" class="job-repeat-every form-control">
           </div>
           <div class="form-group">
-            <label>Job data (json)</label>
+            <label>Dữ liệu công việc (json)</label>
             <textarea class="job-data form-control">{}</textarea>
           </div>
           <div class="form-group">
-            <span class="btn btn-default btn-success" data-action="save">Save</span>
-            <span class="btn btn-default btn-warning" data-action="cancel">Cancel</span>
+            <span class="btn btn-default btn-success" data-action="save">Lưu</span>
+            <span class="btn btn-default btn-warning" data-action="cancel">Hủy bỏ</span>
           </div>
         </div>
       </div>
@@ -107,12 +107,12 @@
           </a>
         </li>
         <ul class="nav nav-sidebar">
-          <li data-state="scheduled"><a class="text-info" href="#">Scheduled<span class="label label-info pull-right"><%- scheduled %></span></a></li>
-          <li data-state="queued"><a class="text-primary" href="#">Queued<span class="label label-primary pull-right"><%- queued %></span></a></li>
-          <li data-state="running"><a class="text-warning" href="#">Running<span class="label label-warning pull-right"><%- running %></span></a></li>
-          <li data-state="completed"><a class="text-success" href="#">Completed<span class="label label-success pull-right"><%- completed %></span></a></li>
-          <li data-state="failed"><a class="text-danger" href="#">Failed<span class="label label-danger pull-right"><%- failed %></span></a></li>
-          <li data-state="repeating"><a class="text-info" href="#">Repeating<span class="label label-info pull-right"><%- repeating %></span></a></li>
+          <li data-state="scheduled"><a class="text-info" href="#">Đã lên lịch<span class="label label-info pull-right"><%- scheduled %></span></a></li>
+          <li data-state="queued"><a class="text-primary" href="#">Đã xếp hàng đợi<span class="label label-primary pull-right"><%- queued %></span></a></li>
+          <li data-state="running"><a class="text-warning" href="#">Đang chạy<span class="label label-warning pull-right"><%- running %></span></a></li>
+          <li data-state="completed"><a class="text-success" href="#">Đã hoàn thành<span class="label label-success pull-right"><%- completed %></span></a></li>
+          <li data-state="failed"><a class="text-danger" href="#">Thất bại<span class="label label-danger pull-right"><%- failed %></span></a></li>
+          <li data-state="repeating"><a class="text-info" href="#">Đang lặp lại<span class="label label-info pull-right"><%- repeating %></span></a></li>
         </ul>
       </ul>
     </script>
@@ -120,11 +120,11 @@
     <script type="text/template" id="job-item-template">
       <td>
         <% if (repeating) { %><span class="label label-info"><i class="glyphicon glyphicon-repeat"></i> <%- job.repeatInterval %></span><% } %>
-        <% if (scheduled) { %><span class="label label-info">Scheduled</span><% } %>
-        <% if (queued) { %><span class="label label-primary">Queued</span><% } %>
-        <% if (running) { %><span class="label label-warning">Running</span><% } %>
-        <% if (completed) { %><span class="label label-success">Completed</span><% } %>
-        <% if (failed) { %><span class="label label-danger">Failed</span><% } %>
+        <% if (scheduled) { %><span class="label label-info">Đã lên lịch</span><% } %>
+        <% if (queued) { %><span class="label label-primary">Đã xếp hàng đợi</span><% } %>
+        <% if (running) { %><span class="label label-warning">Đang chạy</span><% } %>
+        <% if (completed) { %><span class="label label-success">Đã hoàn thành</span><% } %>
+        <% if (failed) { %><span class="label label-danger">Thất bại</span><% } %>
       </td>
       <td>
         <%- job.name %>
@@ -141,11 +141,11 @@
           <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h3 class="panel-title"><%- job.name %></h3>
           <% if (repeating) { %><span class="label label-info"><i class="glyphicon glyphicon-repeat"></i> <%- job.repeatInterval %></span><% } %>
-          <% if (scheduled) { %><span class="label label-info">Scheduled</span><% } %>
-          <% if (queued) { %><span class="label label-primary">Queued</span><% } %>
-          <% if (running) { %><span class="label label-warning">Running</span><% } %>
-          <% if (completed) { %><span class="label label-success">Completed</span><% } %>
-          <% if (failed) { %><span class="label label-danger">Failed</span><% } %>
+          <% if (scheduled) { %><span class="label label-info">Đã lập lịch</span><% } %>
+          <% if (queued) { %><span class="label label-primary">Đã xếp hàng đợi</span><% } %>
+          <% if (running) { %><span class="label label-warning">Đang chạy</span><% } %>
+          <% if (completed) { %><span class="label label-success">Đã hoàn thành</span><% } %>
+          <% if (failed) { %><span class="label label-danger">Thất bại</span><% } %>
         </div>
         <div class="panel-body">
           <% if (job.lastRunAt) { %><p>Last run <time datetime="<%- moment(job.lastRunAt).toISOString() %>"><%- moment(job.lastRunAt).fromNow() %></time></p><% } %>
@@ -154,7 +154,7 @@
           <% if (job.lockedAt) { %><p>Locked <time datetime="<%- moment(job.lockedAt).toISOString() %>"><%- moment(job.lockedAt).fromNow() %></time></p><% } %>
           <% if (job.repeatInterval) { %><p>Repeat each <%- job.repeatInterval %></p><% } %>
 
-          <strong>Job data</strong>
+          <strong>Dữ liệu tác vụ</strong>
           <pre><%- JSON.stringify(job.data, null, 2) %></pre>
           <% if (failed) { %>
             <strong>Failure reason</strong>
@@ -162,8 +162,8 @@
           <% } %>
         </div>
         <div class="panel-footer clearfix">
-          <button type="button" class="btn btn-danger btn-sm" data-action="requeue">Requeue</button>
-          <button type="button" class="btn btn-danger btn-sm pull-right" data-action="delete">Delete permanently</button>
+          <button type="button" class="btn btn-danger btn-sm" data-action="requeue">Xếp lại vào hàng đợi</button>
+          <button type="button" class="btn btn-danger btn-sm pull-right" data-action="delete">Xóa vĩnh viễn</button>
         </div>
       </div>
     </script>
